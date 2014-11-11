@@ -7,6 +7,9 @@
 //
 
 #include <metal_stdlib>
+#include <simd/simd.h>
+#include "BufferIndex.h"
+
 using namespace metal;
 
 // the vertex input structure
@@ -22,10 +25,15 @@ struct VertexOutput {
     float4 position [[position]];
 };
 
+// the structure of fragment uniform data
+struct FragmentUniformData {
+    float4 color;
+};
+
 // we take the whole buffer
 // and we need to calculate the output data for this stats
 vertex VertexOutput RedTriangleVertex(
-                                      const device VertexInput* vertexArray[[buffer(0)]],                                      unsigned int vertexId [[vertex_id]]
+                                      const device VertexInput* vertexArray[[buffer(VERTEX_BUFFER)]],                                      unsigned int vertexId [[vertex_id]]
                                       ) {
     VertexOutput output;
     output.position = float4(vertexArray[vertexId].position, 1.0);
@@ -36,7 +44,8 @@ vertex VertexOutput RedTriangleVertex(
 // rasterization stage and
 // calculate the output color for the fragment,
 // in this case we just return RED
-fragment half4 RedTriangleFragment(VertexOutput vertexOutput [[stage_in]]
+fragment half4 RedTriangleFragment(VertexOutput vertexOutput [[stage_in]],
+                                constant FragmentUniformData& uniform [[buffer(FRAGMENT_UNIFORM_BUFFER)]]
                                    ) {
-    return half4(1.0, 0.0, 0.0, 1.0);
+    return half4(uniform.color);
 }

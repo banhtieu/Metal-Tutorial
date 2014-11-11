@@ -7,11 +7,23 @@
 //
 
 #import "MetalViewController.h"
+#import "BufferIndex.h"
 
 // import metal
 // @import will automatically add linked library to the project
 @import Metal;
 @import QuartzCore.CAMetalLayer;
+@import simd;
+
+// uniform data for matrix
+typedef struct {
+    matrix_float4x4 wvpMatrix;
+} VertexUniformData;
+
+// the data we want to pass to fragment shader
+typedef struct {
+    vector_float4 color;
+} FragmentUniformData;
 
 @interface MetalViewController ()
 {
@@ -23,6 +35,12 @@
     
     // vertex buffer
     id<MTLBuffer> vertexBuffer;
+    
+    // vertex Uniform buffer
+    id<MTLBuffer> vertexUniformBuffer;
+    
+    // fragment Uniform Buffer
+    id<MTLBuffer> fragmentUniformBuffer;
     
     // render pipeline state
     id<MTLRenderPipelineState> renderPipelineState;
@@ -104,8 +122,12 @@
     // create the vertex buffer
     [self createVertexBuffer];
     
+    // create uniform buffer
+    [self createUniformsBuffer];
+    
     // create the render pipeline state
     [self createRenderPipelineState];
+    
 }
 
 // create
@@ -128,6 +150,12 @@
     vertexBuffer = [device newBufferWithBytes:verticesData length:sizeof(verticesData) options:MTLResourceOptionCPUCacheModeDefault];
 }
 
+// create uniforms buffers
+- (void) createUniformsBuffer {
+    FragmentUniformData fragmentUniformData;
+    fragmentUniformData.color = (vector_float4){ 1.0f, 0.0f, 1.0f, 1.0f};
+    fragmentUniformBuffer = [device newBufferWithBytes:&fragmentUniformData length:sizeof(fragmentUniformData) options:MTLResourceOptionCPUCacheModeDefault];
+}
 
 // create the render pipeline state to render later
 - (void) createRenderPipelineState {
@@ -205,7 +233,9 @@
     [commandEncoder setCullMode:MTLCullModeFront];
     
     // set vertex buffer
-    [commandEncoder setVertexBuffer:vertexBuffer offset:0 atIndex:0];
+    [commandEncoder setVertexBuffer:vertexBuffer offset:0 atIndex:VERTEX_BUFFER];
+    [commandEncoder setFragmentBuffer:fragmentUniformBuffer offset:0 atIndex:FRAGMENT_UNIFORM_BUFFER];
+    
     [commandEncoder setRenderPipelineState:renderPipelineState];
     
     // draw primitives

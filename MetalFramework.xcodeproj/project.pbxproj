@@ -28,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3635831F1A11B17000455313 /* BufferIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BufferIndex.h; sourceTree = "<group>"; };
 		36B375571A09BA6E00982BCB /* MetalFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B3755B1A09BA6E00982BCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36B3755C1A09BA6E00982BCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 				36B375671A09BA6E00982BCB /* Images.xcassets */,
 				36B375691A09BA6E00982BCB /* LaunchScreen.xib */,
 				36B3755A1A09BA6E00982BCB /* Supporting Files */,
+				3635831F1A11B17000455313 /* BufferIndex.h */,
 			);
 			path = MetalFramework;
 			sourceTree = "<group>";
