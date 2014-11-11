@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		363583221A11BFF800455313 /* simdmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 363583201A11BFF800455313 /* simdmath.cpp */; };
+		363583241A11EEB200455313 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363583231A11EEB200455313 /* Metal.framework */; };
+		363583261A11EEBC00455313 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363583251A11EEBC00455313 /* QuartzCore.framework */; };
+		3635832A1A1208F200455313 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 363583281A1208F200455313 /* Transform.cpp */; };
 		36B3755D1A09BA6E00982BCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B3755C1A09BA6E00982BCB /* main.m */; };
-		36B375601A09BA6E00982BCB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B3755F1A09BA6E00982BCB /* AppDelegate.m */; };
-		36B375631A09BA6E00982BCB /* MetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B375621A09BA6E00982BCB /* MetalViewController.m */; };
+		36B375601A09BA6E00982BCB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36B3755F1A09BA6E00982BCB /* AppDelegate.mm */; };
+		36B375631A09BA6E00982BCB /* MetalViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36B375621A09BA6E00982BCB /* MetalViewController.mm */; };
 		36B375661A09BA6E00982BCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B375641A09BA6E00982BCB /* Main.storyboard */; };
 		36B375681A09BA6E00982BCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B375671A09BA6E00982BCB /* Images.xcassets */; };
 		36B3756B1A09BA6E00982BCB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B375691A09BA6E00982BCB /* LaunchScreen.xib */; };
@@ -29,13 +33,20 @@
 
 /* Begin PBXFileReference section */
 		3635831F1A11B17000455313 /* BufferIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BufferIndex.h; sourceTree = "<group>"; };
+		363583201A11BFF800455313 /* simdmath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simdmath.cpp; path = math/simdmath.cpp; sourceTree = "<group>"; };
+		363583211A11BFF800455313 /* simdmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simdmath.h; path = math/simdmath.h; sourceTree = "<group>"; };
+		363583231A11EEB200455313 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		363583251A11EEBC00455313 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		363583271A12021500455313 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		363583281A1208F200455313 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transform.cpp; sourceTree = "<group>"; };
+		363583291A1208F200455313 /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
 		36B375571A09BA6E00982BCB /* MetalFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B3755B1A09BA6E00982BCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36B3755C1A09BA6E00982BCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		36B3755E1A09BA6E00982BCB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		36B3755F1A09BA6E00982BCB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		36B3755F1A09BA6E00982BCB /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		36B375611A09BA6E00982BCB /* MetalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalViewController.h; sourceTree = "<group>"; };
-		36B375621A09BA6E00982BCB /* MetalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetalViewController.m; sourceTree = "<group>"; };
+		36B375621A09BA6E00982BCB /* MetalViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MetalViewController.mm; sourceTree = "<group>"; };
 		36B375651A09BA6E00982BCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36B375671A09BA6E00982BCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		36B3756A1A09BA6E00982BCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -50,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363583261A11EEBC00455313 /* QuartzCore.framework in Frameworks */,
+				363583241A11EEB200455313 /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +82,8 @@
 				36B375591A09BA6E00982BCB /* MetalFramework */,
 				36B375731A09BA6E00982BCB /* MetalFrameworkTests */,
 				36B375581A09BA6E00982BCB /* Products */,
+				363583251A11EEBC00455313 /* QuartzCore.framework */,
+				363583231A11EEB200455313 /* Metal.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,14 +101,16 @@
 			children = (
 				36F585201A09D36D00D32B38 /* Shaders */,
 				36B3755E1A09BA6E00982BCB /* AppDelegate.h */,
-				36B3755F1A09BA6E00982BCB /* AppDelegate.m */,
+				36B3755F1A09BA6E00982BCB /* AppDelegate.mm */,
 				36B375611A09BA6E00982BCB /* MetalViewController.h */,
-				36B375621A09BA6E00982BCB /* MetalViewController.m */,
+				36B375621A09BA6E00982BCB /* MetalViewController.mm */,
 				36B375641A09BA6E00982BCB /* Main.storyboard */,
 				36B375671A09BA6E00982BCB /* Images.xcassets */,
 				36B375691A09BA6E00982BCB /* LaunchScreen.xib */,
 				36B3755A1A09BA6E00982BCB /* Supporting Files */,
 				3635831F1A11B17000455313 /* BufferIndex.h */,
+				363583211A11BFF800455313 /* simdmath.h */,
+				363583201A11BFF800455313 /* simdmath.cpp */,
 			);
 			path = MetalFramework;
 			sourceTree = "<group>";
@@ -128,6 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				36F585211A09D37E00D32B38 /* RedTriangle.metal */,
+				363583271A12021500455313 /* Common.h */,
+				363583281A1208F200455313 /* Transform.cpp */,
+				363583291A1208F200455313 /* Transform.h */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -232,10 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36B375631A09BA6E00982BCB /* MetalViewController.m in Sources */,
-				36B375601A09BA6E00982BCB /* AppDelegate.m in Sources */,
+				3635832A1A1208F200455313 /* Transform.cpp in Sources */,
+				36B375631A09BA6E00982BCB /* MetalViewController.mm in Sources */,
+				36B375601A09BA6E00982BCB /* AppDelegate.mm in Sources */,
 				36B3755D1A09BA6E00982BCB /* main.m in Sources */,
 				36F585221A09D37E00D32B38 /* RedTriangle.metal in Sources */,
+				363583221A11BFF800455313 /* simdmath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

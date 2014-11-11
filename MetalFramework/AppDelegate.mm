@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <simd/simd.h>
 
 @interface AppDelegate ()
 

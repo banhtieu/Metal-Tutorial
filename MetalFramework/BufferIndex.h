@@ -11,6 +11,7 @@
 
 enum BufferIndex {
     VERTEX_BUFFER,
+    VERTEX_UNIFORM_BUFFER,
     FRAGMENT_UNIFORM_BUFFER
 };
 

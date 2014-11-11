@@ -11,19 +11,12 @@
 
 // import metal
 // @import will automatically add linked library to the project
-@import Metal;
-@import QuartzCore.CAMetalLayer;
-@import simd;
+#import <Metal/Metal.h>
+#import <QuartzCore/CAMetalLayer.h>
 
-// uniform data for matrix
-typedef struct {
-    matrix_float4x4 wvpMatrix;
-} VertexUniformData;
-
-// the data we want to pass to fragment shader
-typedef struct {
-    vector_float4 color;
-} FragmentUniformData;
+//#include "simdmath.h"
+#include "Common.h"
+#include "Transform.h"
 
 @interface MetalViewController ()
 {
@@ -35,6 +28,9 @@ typedef struct {
     
     // vertex buffer
     id<MTLBuffer> vertexBuffer;
+    
+    // rotate angle
+    float rotateAngle;
     
     // vertex Uniform buffer
     id<MTLBuffer> vertexUniformBuffer;
@@ -152,8 +148,12 @@ typedef struct {
 
 // create uniforms buffers
 - (void) createUniformsBuffer {
+    VertexUniformData vertexUniformData;
+    
+    vertexUniformBuffer = [device newBufferWithBytes:&vertexUniformData length:sizeof(VertexUniformData) options:MTLResourceOptionCPUCacheModeDefault];
+    
     FragmentUniformData fragmentUniformData;
-    fragmentUniformData.color = (vector_float4){ 1.0f, 0.0f, 1.0f, 1.0f};
+    fragmentUniformData.color = {1.0f, 0.0f, 1.0f, 1.0f};
     fragmentUniformBuffer = [device newBufferWithBytes:&fragmentUniformData length:sizeof(fragmentUniformData) options:MTLResourceOptionCPUCacheModeDefault];
 }
 
@@ -234,6 +234,14 @@ typedef struct {
     
     // set vertex buffer
     [commandEncoder setVertexBuffer:vertexBuffer offset:0 atIndex:VERTEX_BUFFER];
+    
+    //
+    VertexUniformData vertexUniformData;
+
+    vertexUniformData.wvpMatrix = math::rotate(rotateAngle, 0.0f, 0.0f, 1.0f);
+    memcpy([vertexUniformBuffer contents], &vertexUniformData, sizeof(VertexUniformData));
+    
+    [commandEncoder setVertexBuffer:vertexUniformBuffer offset:0 atIndex:VERTEX_UNIFORM_BUFFER];
     [commandEncoder setFragmentBuffer:fragmentUniformBuffer offset:0 atIndex:FRAGMENT_UNIFORM_BUFFER];
     
     [commandEncoder setRenderPipelineState:renderPipelineState];
@@ -258,7 +266,7 @@ typedef struct {
 // update game logic here
 - (void) update:(CFTimeInterval) frameTime
 {
-    
+    rotateAngle += frameTime * M_PI / 2;
 }
 
 // the loop content
