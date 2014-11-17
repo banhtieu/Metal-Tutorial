@@ -18,6 +18,7 @@
 		36B375681A09BA6E00982BCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B375671A09BA6E00982BCB /* Images.xcassets */; };
 		36B3756B1A09BA6E00982BCB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B375691A09BA6E00982BCB /* LaunchScreen.xib */; };
 		36B375771A09BA6E00982BCB /* MetalFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B375761A09BA6E00982BCB /* MetalFrameworkTests.m */; };
+		36CED6E51A19CE64004BF704 /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36CED6E41A19CE64004BF704 /* GameObject.mm */; };
 		36F585221A09D37E00D32B38 /* RedTriangle.metal in Sources */ = {isa = PBXBuildFile; fileRef = 36F585211A09D37E00D32B38 /* RedTriangle.metal */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,8 @@
 		36B375701A09BA6E00982BCB /* MetalFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetalFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B375751A09BA6E00982BCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36B375761A09BA6E00982BCB /* MetalFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetalFrameworkTests.m; sourceTree = "<group>"; };
+		36CED6E31A19CE64004BF704 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		36CED6E41A19CE64004BF704 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
 		36F585211A09D37E00D32B38 /* RedTriangle.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = RedTriangle.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3635832B1A120EC200455313 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				36CED6E31A19CE64004BF704 /* GameObject.h */,
+				36CED6E41A19CE64004BF704 /* GameObject.mm */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
 		36B3754E1A09BA6E00982BCB = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +111,7 @@
 		36B375591A09BA6E00982BCB /* MetalFramework */ = {
 			isa = PBXGroup;
 			children = (
+				3635832B1A120EC200455313 /* Game */,
 				36F585201A09D36D00D32B38 /* Shaders */,
 				36B3755E1A09BA6E00982BCB /* AppDelegate.h */,
 				36B3755F1A09BA6E00982BCB /* AppDelegate.mm */,
@@ -253,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3635832A1A1208F200455313 /* Transform.cpp in Sources */,
+				36CED6E51A19CE64004BF704 /* GameObject.mm in Sources */,
 				36B375631A09BA6E00982BCB /* MetalViewController.mm in Sources */,
 				36B375601A09BA6E00982BCB /* AppDelegate.mm in Sources */,
 				36B3755D1A09BA6E00982BCB /* main.m in Sources */,
