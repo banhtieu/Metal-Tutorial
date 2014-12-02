@@ -17,13 +17,11 @@
 //#include "simdmath.h"
 #include "Common.h"
 #include "Transform.h"
+#include "Device.h"
 #include "Model.h"
 
 @interface MetalViewController ()
-{
-    // the device that manages all resources and operation related to metal
-    id<MTLDevice> device;
-    
+{   
     // the command queue
     id<MTLCommandQueue> commandQueue;
     
@@ -51,6 +49,7 @@
     CADisplayLink *timer;
     
     Model *model;
+    Device *device;
 }
 
 @end
@@ -87,28 +86,12 @@
 
 // intialize the graphics device
 - (void) initDevice {
-    device = MTLCreateSystemDefaultDevice();
+    device = [[Device alloc] init];
 }
 
 // initialize a layer and attach to uiview layer
 - (void) initMetalLayer {
-    metalLayer = [[CAMetalLayer alloc] init];
-    
-    // set contents scale for retina display
-    metalLayer.contentsScale = [UIScreen mainScreen].nativeScale;
-    
-    // set layer frame
-    metalLayer.frame = self.view.frame;
-    
-    // set drawable size (size of output buffer)
-    CGSize drawableSize = self.view.bounds.size;
-    
-    // multiply by content scale
-    drawableSize.width *= metalLayer.contentsScale;
-    drawableSize.height *= metalLayer.contentsScale;
-    
-    // add to main view
-    [self.view.layer addSublayer:metalLayer];
+    [device initLayer:self.view];
 }
 
 // create the command queue
