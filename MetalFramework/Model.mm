@@ -14,9 +14,12 @@
 // load a model from a file
 - (void) load:(NSString *)path
 {
+    NSBundle *bundle = [NSBundle mainBundle];
+    path = [bundle pathForResource:path ofType:@"nfg"];
     FILE *file = fopen([path UTF8String], "r");
+    
     VertexData *verticesData = NULL;
-    unsigned short *indices = NULL;
+    UInt16 *indices = NULL;
     
     if (file)
     {
@@ -34,13 +37,19 @@
                    );
         }
         
-        fscanf(file, "%u", &_numberOfIndices);
+        fscanf(file, "NrIndices: %u\n", &_numberOfIndices);
+        
+        indices = new UInt16[_numberOfIndices];
         
         for (int i = 0; i < _numberOfIndices / 3; i++) {
             fscanf(file, "  %*d.   %hd,   %hd,   %hd\n", &indices[i * 3], &indices[i * 3 + 1], &indices[i * 3 + 2]);
         }
         
         fclose(file);
+    }
+    else
+    {
+        assert(false);
     }
 }
 

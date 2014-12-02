@@ -17,6 +17,7 @@
 //#include "simdmath.h"
 #include "Common.h"
 #include "Transform.h"
+#include "Model.h"
 
 @interface MetalViewController ()
 {
@@ -48,6 +49,8 @@
     id<CAMetalDrawable> drawable;
     
     CADisplayLink *timer;
+    
+    Model *model;
 }
 
 @end
@@ -75,6 +78,10 @@
     
     // setup the game loop
     [self setUpGameLoop];
+    
+    model = [[Model alloc] init];
+    
+    [model load:@"res/Models/Bila"];
     
 }
 
