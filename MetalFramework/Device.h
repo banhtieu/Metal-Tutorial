@@ -12,7 +12,10 @@
 
 @interface Device : NSObject
 
+@property (nonatomic, retain, readonly) id<MTLDevice> device;
+
 - (id) init;
 - (void) initLayer:(UIView *) view;
 
++ (Device *) instance;
 @end

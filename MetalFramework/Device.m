@@ -12,7 +12,6 @@
 
 @interface Device()
 {
-    id<MTLDevice> _device;
     CAMetalLayer *metalLayer;
 }
 
@@ -50,6 +49,19 @@
     
     // add to main view
     [view.layer addSublayer:metalLayer];
+}
+
+// get the static instance
++ (Device *) instance
+{
+    static Device *instance = NULL;
+    
+    if (instance == NULL)
+    {
+        instance = [[Device alloc] init];
+    }
+    
+    return instance;
 }
 
 @end
