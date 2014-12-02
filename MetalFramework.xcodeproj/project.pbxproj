@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360CD9BD1A19FDF6003E9F5C /* res in Resources */ = {isa = PBXBuildFile; fileRef = 360CD9BC1A19FDF6003E9F5C /* res */; };
 		363583221A11BFF800455313 /* simdmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 363583201A11BFF800455313 /* simdmath.cpp */; };
 		363583241A11EEB200455313 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363583231A11EEB200455313 /* Metal.framework */; };
 		363583261A11EEBC00455313 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363583251A11EEBC00455313 /* QuartzCore.framework */; };
@@ -19,6 +20,7 @@
 		36B3756B1A09BA6E00982BCB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B375691A09BA6E00982BCB /* LaunchScreen.xib */; };
 		36B375771A09BA6E00982BCB /* MetalFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B375761A09BA6E00982BCB /* MetalFrameworkTests.m */; };
 		36CED6E51A19CE64004BF704 /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36CED6E41A19CE64004BF704 /* GameObject.mm */; };
+		36CED6EB1A19DCFA004BF704 /* Model.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36CED6EA1A19DCFA004BF704 /* Model.mm */; };
 		36F585221A09D37E00D32B38 /* RedTriangle.metal in Sources */ = {isa = PBXBuildFile; fileRef = 36F585211A09D37E00D32B38 /* RedTriangle.metal */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		360CD9BC1A19FDF6003E9F5C /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		3635831F1A11B17000455313 /* BufferIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BufferIndex.h; sourceTree = "<group>"; };
 		363583201A11BFF800455313 /* simdmath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simdmath.cpp; path = math/simdmath.cpp; sourceTree = "<group>"; };
 		363583211A11BFF800455313 /* simdmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simdmath.h; path = math/simdmath.h; sourceTree = "<group>"; };
@@ -56,6 +59,8 @@
 		36B375761A09BA6E00982BCB /* MetalFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetalFrameworkTests.m; sourceTree = "<group>"; };
 		36CED6E31A19CE64004BF704 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		36CED6E41A19CE64004BF704 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
+		36CED6E91A19DCFA004BF704 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		36CED6EA1A19DCFA004BF704 /* Model.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Model.mm; sourceTree = "<group>"; };
 		36F585211A09D37E00D32B38 /* RedTriangle.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = RedTriangle.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,8 +87,11 @@
 		3635832B1A120EC200455313 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				360CD9BC1A19FDF6003E9F5C /* res */,
 				36CED6E31A19CE64004BF704 /* GameObject.h */,
 				36CED6E41A19CE64004BF704 /* GameObject.mm */,
+				36CED6E91A19DCFA004BF704 /* Model.h */,
+				36CED6EA1A19DCFA004BF704 /* Model.mm */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36B375661A09BA6E00982BCB /* Main.storyboard in Resources */,
+				360CD9BD1A19FDF6003E9F5C /* res in Resources */,
 				36B3756B1A09BA6E00982BCB /* LaunchScreen.xib in Resources */,
 				36B375681A09BA6E00982BCB /* Images.xcassets in Resources */,
 			);
@@ -268,6 +277,7 @@
 				3635832A1A1208F200455313 /* Transform.cpp in Sources */,
 				36CED6E51A19CE64004BF704 /* GameObject.mm in Sources */,
 				36B375631A09BA6E00982BCB /* MetalViewController.mm in Sources */,
+				36CED6EB1A19DCFA004BF704 /* Model.mm in Sources */,
 				36B375601A09BA6E00982BCB /* AppDelegate.mm in Sources */,
 				36B3755D1A09BA6E00982BCB /* main.m in Sources */,
 				36F585221A09D37E00D32B38 /* RedTriangle.metal in Sources */,
