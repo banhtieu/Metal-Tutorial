@@ -15,10 +15,11 @@
 #import <QuartzCore/CAMetalLayer.h>
 
 //#include "simdmath.h"
-#include "Common.h"
-#include "Transform.h"
-#include "Device.h"
-#include "Model.h"
+#import "Common.h"
+#import "Transform.h"
+#import "Device.h"
+#import "Model.h"
+#import "Effect.h"
 
 @interface MetalViewController ()
 {   
@@ -50,6 +51,7 @@
     
     Model *model;
     Device *device;
+    Effect *effect;
 }
 
 @end
@@ -66,21 +68,11 @@
     // create the CAMetalLayer
     [self initMetalLayer];
     
-    // create a command queue to manage all commands sent to GPU
-    // all commands will be encoded using command encoders
-    // then added to a command buffer
-    // and finally sent to command queue for execution
-    [self createCommandQueue];
-    
     // initialize resources.
     [self createRenderResources];
     
     // setup the game loop
     [self setUpGameLoop];
-    
-    model = [[Model alloc] init];
-    
-    [model load:@"res/Models/Bila"];
     
 }
 
@@ -94,85 +86,17 @@
     [device initLayer:self.view];
 }
 
-// create the command queue
-- (void) createCommandQueue {
-    commandQueue = [device newCommandQueue];
-}
-
 // in this step we need to initialize all resources
 // vertex buffers
 // pipeline states
 // rendering states
 - (void) createRenderResources {
     
-    // create the vertex buffer
-    [self createVertexBuffer];
+    model = [[Model alloc] init];
+    [model load:@"res/Models/Bila"];
     
-    // create uniform buffer
-    [self createUniformsBuffer];
-    
-    // create the render pipeline state
-    [self createRenderPipelineState];
-    
-}
-
-// create
-- (void) createVertexBuffer {
-    // describe the object
-    struct Position {
-        float x;
-        float y;
-        float z;
-    };
-    
-    // declare the data
-    struct Position verticesData[] = {
-        {0.0f, 0.5f, 0.0f},
-        {-0.5f, -0.5f, 0.0f},
-        {0.5f, -0.5f, 0.0f}
-    };
-    
-    // create the buffer
-    vertexBuffer = [device newBufferWithBytes:verticesData length:sizeof(verticesData) options:MTLResourceOptionCPUCacheModeDefault];
-}
-
-// create uniforms buffers
-- (void) createUniformsBuffer {
-    VertexUniformData vertexUniformData;
-    
-    vertexUniformBuffer = [device newBufferWithBytes:&vertexUniformData length:sizeof(VertexUniformData) options:MTLResourceOptionCPUCacheModeDefault];
-    
-    FragmentUniformData fragmentUniformData;
-    fragmentUniformData.color = {1.0f, 0.0f, 1.0f, 1.0f};
-    fragmentUniformBuffer = [device newBufferWithBytes:&fragmentUniformData length:sizeof(fragmentUniformData) options:MTLResourceOptionCPUCacheModeDefault];
-}
-
-// create the render pipeline state to render later
-- (void) createRenderPipelineState {
-    // get the default library
-    id<MTLLibrary> library = [device newDefaultLibrary];
-    
-    // get vertex function and fragment function
-    id<MTLFunction> vertexFunction = [library newFunctionWithName:@"RedTriangleVertex"];
-    id<MTLFunction> fragmentFunction = [library newFunctionWithName:@"RedTriangleFragment"];
-    
-    // create a render pipeline descriptor
-    MTLRenderPipelineDescriptor *descriptor = [[MTLRenderPipelineDescriptor alloc] init];
-    
-    // set fragment function
-    descriptor.vertexFunction = vertexFunction;
-    descriptor.fragmentFunction = fragmentFunction;
-    
-    // set pixel format
-    [descriptor.colorAttachments objectAtIndexedSubscript:0].pixelFormat = MTLPixelFormatBGRA8Unorm;
-    
-    NSError *error = nil;
-    renderPipelineState = [device newRenderPipelineStateWithDescriptor:descriptor error:&error];
-    
-    if (error) {
-        NSLog(@"Error creating render pipeline state");
-    }
-    
+    effect = [[Effect alloc] init];
+    [effect loadVertexShader:@"RedTriangleVertex" andFragmentShader:@"RedTriangleFragment"];
     
 }
 

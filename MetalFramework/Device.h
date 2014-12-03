@@ -16,6 +16,7 @@
 
 - (id) init;
 - (void) initLayer:(UIView *) view;
+- (id<MTLBuffer>) createBufferWithData:(void *) data andSize: (UInt32) size;
 
 + (Device *) instance;
 @end

@@ -13,6 +13,7 @@
 @interface Device()
 {
     CAMetalLayer *metalLayer;
+    id<MTLCommandQueue> _commandQueue;
 }
 
 @end
@@ -23,9 +24,12 @@
 - (instancetype)init
 {
     self = [super init];
+    
     if (self) {
         _device = MTLCreateSystemDefaultDevice();
+        _commandQueue = [_device newCommandQueue];
     }
+    
     return self;
 }
 
@@ -50,6 +54,14 @@
     // add to main view
     [view.layer addSublayer:metalLayer];
 }
+
+// Create a new buffer
+- (id<MTLBuffer>)createBufferWithData:(void *)data andSize:(UInt32)size
+{
+    return [_device newBufferWithBytes:data length:size options:MTLResourceOptionCPUCacheModeDefault];
+}
+
+
 
 // get the static instance
 + (Device *) instance
