@@ -55,6 +55,7 @@
     }
     else
     {
+        NSLog(@"Error Loading Model");
         assert(false);
     }
 }
