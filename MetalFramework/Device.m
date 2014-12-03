@@ -13,7 +13,7 @@
 @interface Device()
 {
     CAMetalLayer *metalLayer;
-    id<MTLCommandQueue> _commandQueue;
+    id<CAMetalDrawable> drawable;
 }
 
 @end
@@ -61,6 +61,27 @@
     return [_device newBufferWithBytes:data length:size options:MTLResourceOptionCPUCacheModeDefault];
 }
 
+- (void) startDrawing
+{
+    // get next drawable
+    drawable = metalLayer.nextDrawable;
+    
+    // create the render descriptor
+    _renderPassDescriptor = [[MTLRenderPassDescriptor alloc] init];
+    
+    MTLRenderPassColorAttachmentDescriptor *colorAttachment = [_renderPassDescriptor.colorAttachments objectAtIndexedSubscript:0];
+    
+    // set texture for first color attachment
+    colorAttachment.texture = [drawable texture];
+    colorAttachment.loadAction = MTLLoadActionClear;
+    colorAttachment.clearColor = MTLClearColorMake(0.0, 0.0, 0.0, 1.0);
+}
+
+// get the command buffer
+- (id<MTLCommandBuffer>) commandBuffer
+{
+    return [self.commandQueue commandBuffer];
+}
 
 
 // get the static instance

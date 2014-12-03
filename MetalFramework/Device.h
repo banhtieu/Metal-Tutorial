@@ -13,10 +13,15 @@
 @interface Device : NSObject
 
 @property (nonatomic, retain, readonly) id<MTLDevice> device;
+@property (nonatomic, retain, readonly) MTLRenderPassDescriptor *renderPassDescriptor;
+@property (nonatomic, retain, readonly) id<MTLCommandQueue> commandQueue;
+@property (nonatomic, retain, readonly) id<MTLCommandBuffer> commandBuffer;
 
 - (id) init;
 - (void) initLayer:(UIView *) view;
 - (id<MTLBuffer>) createBufferWithData:(void *) data andSize: (UInt32) size;
+- (void) startDrawing;
+
 
 + (Device *) instance;
 @end

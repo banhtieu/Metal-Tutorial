@@ -7,7 +7,8 @@
 //
 
 #import "GameObject.h"
-#include "Common.h"
+#import "Common.h"
+#import "Device.h"
 
 @interface GameObject()
 {
@@ -60,7 +61,15 @@
 // render this object
 - (void) render
 {
-    
+    // If model and effect is not null
+    if (self.model && self.effect) {
+        // create command encoder
+        Device *device = [Device instance];
+        id<MTLCommandEncoder> commandEncoder = [device.commandBuffer renderCommandEncoderWithDescriptor:device.renderPassDescriptor];
+        
+        // start drawing
+        
+    }
 }
 
 // update the object
