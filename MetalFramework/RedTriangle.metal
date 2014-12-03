@@ -16,6 +16,10 @@ using namespace metal;
 // we need to declare it to match with the input data
 struct VertexInput {
     packed_float3 position;
+    packed_float3 normal;
+    packed_float3 biNormal;
+    packed_float3 tangent;
+    packed_float2 uv;
 };
 
 // the vertex output - data to be send from vertex processing stage
