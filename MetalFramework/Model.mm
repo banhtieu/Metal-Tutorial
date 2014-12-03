@@ -7,6 +7,7 @@
 //
 
 #import "Model.h"
+#import "Device.h"
 #include <stdio.h>
 
 @implementation Model
@@ -46,6 +47,11 @@
         }
         
         fclose(file);
+        
+        Device *device = [Device instance];
+        // load
+        _vertexBuffer = [device createBufferWithData:verticesData andSize:sizeof(VertexData) * _numberOfVertices];
+        _indexBuffer = [device createBufferWithData:indices andSize:sizeof(UInt16) * _numberOfIndices];
     }
     else
     {

@@ -10,6 +10,7 @@
 #define MetalFramework_Common_h
 
 #include <simd/simd.h>
+#include "BufferIndex.h"
 
 using namespace simd;
 

@@ -65,10 +65,12 @@
     if (self.model && self.effect) {
         // create command encoder
         Device *device = [Device instance];
-        id<MTLCommandEncoder> commandEncoder = [device.commandBuffer renderCommandEncoderWithDescriptor:device.renderPassDescriptor];
+        id<MTLRenderCommandEncoder> commandEncoder = [device.commandBuffer renderCommandEncoderWithDescriptor:device.renderPassDescriptor];
         
         // start drawing
-        
+        [commandEncoder setVertexBuffer:self.model.vertexBuffer offset:0 atIndex:VERTEX_BUFFER];
+        [commandEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle indexCount:self.model.numberOfIndices indexType:MTLIndexTypeUInt16 indexBuffer:self.model.indexBuffer indexBufferOffset:0];
+        [commandEncoder endEncoding];
     }
 }
 
