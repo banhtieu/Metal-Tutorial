@@ -10,6 +10,9 @@
 #import <Metal/Metal.h>
 
 #import "Transform.h"
+#import "Effect.h"
+#import "Model.h"
+
 using namespace simd;
 
 // Game Object
@@ -27,8 +30,11 @@ using namespace simd;
 // world matrix for this object
 @property(nonatomic) float4x4 worldMatrix;
 
-// vertex buffer of this Game Object
-@property(nonatomic, retain) id<MTLRenderPipelineState> renderPipelineState;
+// The effect for this Object
+@property(nonatomic, retain) Effect *effect;
+
+// The model for the Object
+@property(nonatomic, retain) Model *model;
 
 // array of textures
 @property(nonatomic, retain) NSMutableArray *textures;
